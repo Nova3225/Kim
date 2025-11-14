@@ -4,19 +4,26 @@ import java.util.ArrayList;
 
 import Entity.Monster.Monster;
 import Entity.Player.Player;
-import Game.Process;
 
 public class LevelData {
 
+    //Presets
     public LEVEL_TYPE levelType;
     public ArrayList<Monster> monsters = new ArrayList<>();
 
-    public LevelData(LEVEL_TYPE levelType){
+    //Import when level starts
+    public Player player;
+
+    public LevelData(){}
+
+    //Import presets
+    public void setLevelData(LEVEL_TYPE levelType, ArrayList<Monster> monsters){
         this.levelType = levelType;
+        this.monsters = monsters;
     }
 
-    public void levelInit(){
-        Process.player.setDefense(0);
+    //Import other when level starts
+    public void importPlayer(Player player){
+        this.player = player;
     }
-
 }

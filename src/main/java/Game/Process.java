@@ -23,6 +23,20 @@ public class Process {
         frame.init();
         frame.gamePanel.createPlayer();
 
+        map = new Map();
+        map.generate();
+    }
+
+    public void start() {
+        for (LevelData levelData : map.levelDatas){
+
+            levelData.importPlayer(levelData.player);
+            levelData = map.levelManager.levelStart(levelData);
+            if (levelData.player.getHealth() <= 0){
+                System.out.println("游戏结束");
+                return;
+            }
+        }
     }
 
     // 除了测试，一般不使用
