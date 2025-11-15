@@ -10,5 +10,6 @@ public class Main {
 
         process.init();
 
+        //process.start();
     }
 }

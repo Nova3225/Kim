@@ -36,6 +36,10 @@ public class PlayerCharacter extends Character{
     }
 
     public void update(){
+
+
+
+        /*
         int finalSpeed = speed;
         if (kh.nearTwoDirection){
             finalSpeed = (int)(speed*0.7);
@@ -56,6 +60,7 @@ public class PlayerCharacter extends Character{
             y += finalSpeed;
             System.out.println("s");
         }
+        */
     }
 
     // 绘制 在JPanel中使用

@@ -4,11 +4,14 @@ import javax.swing.*;
 
 public class Frame {
 
+    public final static int WIDTH = 1280;
+    public final static int HEIGHT = 720;
+
     public JFrame frame = new JFrame();
 
-    public GamePanel gamePanel;
-
     public Frame() {}
+
+    public Layers layers;
 
     public void init() {
 
@@ -16,19 +19,15 @@ public class Frame {
         frame.setTitle("Kim");
         frame.setResizable(false);
 
-        gamePanel = new GamePanel();
+        layers = new Layers();
 
-        frame.add(gamePanel);
+        frame.add(layers);
         frame.pack();
-
-        gamePanel.gameThread.start();
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        layers.gamePanel.gameThread.start();
 
     }
-
-
-
 }

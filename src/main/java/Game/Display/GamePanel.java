@@ -1,52 +1,67 @@
 package Game.Display;
 
+import Game.Display.Component.GameComponent;
 import Game.Display.Entity.PlayerCharacter;
 import Game.Display.Entity.Character;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GamePanel extends JPanel implements Runnable{
 
     // Size
-    final static int WIDTH = 1280;
-    final static int HEIGHT = 720;
+    public final static int WIDTH = Frame.WIDTH;
+    public final static int HEIGHT = Frame.HEIGHT;
     // Display
     final static int FPS = 60;
 
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread = new Thread(this);
     PlayerCharacter playercharacter;
-    BufferedImage background;
 
     ArrayList<Character> characters = new ArrayList<>();
+
+    ArrayList<GameButton> buttons = new ArrayList<>();
 
     public GamePanel(){
         //尺寸
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        this.setBounds(0,0,WIDTH,HEIGHT);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
+        this.setOpaque(false);
 
-
-        try {
-            background = ImageIO.read(getClass().getResourceAsStream("/Background/Background.jpg"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        // 初始化
+        fightingArrangement();
     }
 
-    public void createPlayer(){
+    //INIT方法
+
+
+    public void createPlayerEntity(){
         if (playercharacter == null){
             playercharacter = new PlayerCharacter(this, keyHandler);
-            characters.add(playercharacter);
         }else {
             throw new RuntimeException("Player already exists");
         }
+    }
+
+    public void deletePlayerEntity(){
+        if (characters.indexOf(playercharacter) != -1){
+            characters.remove(playercharacter);
+        }else {
+            throw new RuntimeException("Player doesn't exist");
+        }
+    }
+
+    public void fightingArrangement(){
+        createPlayerEntity();
+        playercharacter.setAttribute(WIDTH / 3 / 3, HEIGHT / 6 / 2, WIDTH / 3 / 3, WIDTH / 3 / 3);
+        characters.add(playercharacter);
     }
 
     @Override
@@ -88,6 +103,14 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     private void update() {
+
+        /*
+        for (GameComponent component : components){
+            component.update();
+        }
+
+         */
+
         for (Character character : characters){
             character.update();
         }
@@ -95,18 +118,12 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
-        //Background
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(background, 0, 0, null);
 
-        //Player
+        //Character
         for (Character character : characters){
             character.draw(g2);
         }
-
         g2.dispose();
     }
-
-
 }

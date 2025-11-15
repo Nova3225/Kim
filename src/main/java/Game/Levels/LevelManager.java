@@ -21,6 +21,7 @@ public class LevelManager {
 
     private LevelData fight(LevelData levelData){
 
+
         //TODO
 
         levelData.player.setHealth(levelData.player.getHealth() + healthRecover);
@@ -29,10 +30,16 @@ public class LevelManager {
     }
 
     private LevelData event(LevelData levelData) {
+
+        //TODO
+
         return levelData;
     }
 
     private LevelData boss(LevelData levelData) {
+
+        //TODO
+
         return levelData;
     }
 

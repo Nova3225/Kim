@@ -13,23 +13,26 @@ public class Process {
 
     protected static Map map;
 
-    Frame frame = new Frame();
+    Frame frame;
 
-    public Process() {
-    }
+    public Process() {}
 
     public void init() {
 
-        frame.init();
-        frame.gamePanel.createPlayer();
+        frame = new Frame();
 
+        //display
+        frame.init();
+
+        //map&level
         map = new Map();
         map.generate();
+
     }
 
+    //开始游戏进程
     public void start() {
         for (LevelData levelData : map.levelDatas){
-
             levelData.importPlayer(levelData.player);
             levelData = map.levelManager.levelStart(levelData);
             if (levelData.player.getHealth() <= 0){
@@ -43,7 +46,4 @@ public class Process {
     public static void intoRoom(LevelData levelData){
 
     }
-
-
-
 }
