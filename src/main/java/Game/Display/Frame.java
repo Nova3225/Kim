@@ -20,10 +20,9 @@ public class Frame {
         frame.setResizable(false);
 
         layers = new Layers();
-
         frame.add(layers);
-        frame.pack();
 
+        frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 

@@ -22,6 +22,7 @@ public class Process {
         frame = new Frame();
 
         //display
+        //当前仅添加战斗模式
         frame.init();
 
         //map&level

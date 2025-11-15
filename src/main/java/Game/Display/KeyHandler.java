@@ -3,6 +3,30 @@ package Game.Display;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/*
+( update() )
+        int finalSpeed = speed;
+        if (kh.nearTwoDirection){
+            finalSpeed = (int)(speed*0.7);
+        }
+        if (kh.aPressed){
+            x -= finalSpeed;
+            System.out.println("a");
+        }
+        if (kh.dPressed){
+            x += finalSpeed;
+            System.out.println("d");
+        }
+        if (kh.wPressed){
+            y -= finalSpeed;
+            System.out.println("w");
+        }
+        if (kh.sPressed){
+            y += finalSpeed;
+            System.out.println("s");
+        }
+        */
+
 public class KeyHandler implements KeyListener{
 
     public boolean wPressed;
