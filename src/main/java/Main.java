@@ -9,5 +9,7 @@ public class Main {
         process.init();
 
         //process.start();
+
+        process.quit();
     }
 }

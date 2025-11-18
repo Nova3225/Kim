@@ -2,6 +2,7 @@ package Game;
 
 import Entity.Player.Player;
 import Game.Levels.*;
+import Display.Frame;
 
 public class Process {
 
@@ -9,19 +10,31 @@ public class Process {
 
     protected static Map map;
 
-    public Process() {}
+    public static Frame frame;
+
+    public Process() {
+
+    }
 
     public void init() {
 
-        //map&level
-        map = new Map();
+        //地图生成
+        map = new Map(); //ArrayList<LevelData>:levelDatas;
         map.generate();
-        map.print();
+        //map.print();
+
+        //显示系统初始化
+        frame = new Frame();
+
+    }
+
+    public void quit(){
 
     }
 
     //开始游戏进程
     public void start() {
+
         for (LevelData levelData : map.levelDatas){
             levelData.importPlayer(levelData.player);
             levelData = map.levelManager.levelStart(levelData);
@@ -30,6 +43,7 @@ public class Process {
                 return;
             }
         }
+
     }
 
 }
