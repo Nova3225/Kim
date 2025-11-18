@@ -26,4 +26,6 @@ public class LevelData {
     public void importPlayer(Player player){
         this.player = player;
     }
+
+
 }

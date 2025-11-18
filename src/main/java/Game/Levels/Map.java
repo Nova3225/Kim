@@ -21,5 +21,11 @@ public class Map {
         }
     }
 
+    public void print(){
+        for (int i = 0; i < levelWidth; i++) {
+            System.out.println(levelDatas[i].levelType);
+        }
+    }
+
 
 }

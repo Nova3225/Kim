@@ -1,11 +1,7 @@
 package Game;
 
-import java.util.ArrayList;
-
-import Entity.Monster.Monster;
 import Entity.Player.Player;
 import Game.Levels.*;
-import Game.Display.Frame;
 
 public class Process {
 
@@ -13,21 +9,14 @@ public class Process {
 
     protected static Map map;
 
-    Frame frame;
-
     public Process() {}
 
     public void init() {
 
-        frame = new Frame();
-
-        //display
-        //当前仅添加战斗模式
-        frame.init();
-
         //map&level
         map = new Map();
         map.generate();
+        map.print();
 
     }
 
@@ -43,8 +32,4 @@ public class Process {
         }
     }
 
-    // 除了测试，一般不使用
-    public static void intoRoom(LevelData levelData){
-
-    }
 }
