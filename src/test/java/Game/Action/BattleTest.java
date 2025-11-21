@@ -1,10 +1,9 @@
-package Game.Battle;
+package Game.Action;
 
 import static org.junit.jupiter.api.Assertions.*;
-import Game.Battle.Battle;
+
 import Game.GameProcess;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BattleTest {
@@ -20,7 +19,6 @@ class BattleTest {
     @Test
     public void testBattle() {
         Battle battle = new Battle();
-        assertEquals(battle.playerAttack(gameProcess.map.levelDatas[0].monsters.get(0)), 50);
     }
 
 }

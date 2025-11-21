@@ -7,9 +7,7 @@ public class Main {
         GameProcess process = new GameProcess();
 
         process.init();
-
-        process.frame.start();
-
+        process.goOnce();
         //process.start();
 
         process.quit();

@@ -2,16 +2,15 @@ package Game.Levels;
 
 public class Map {
 
-    final int levelWidth = 4;
+    final int levelWidth = 1;
 
     public LevelData[] levelDatas = new LevelData[levelWidth];
     LevelDataGenerator levelDataGenerator = new LevelDataGenerator();
+    public LevelManager levelManager = new LevelManager();
 
     public Map(){
         levelDatas = new LevelData[levelWidth];
     }
-
-    public LevelManager levelManager = new LevelManager();
 
     public void generate(){
         for (int i = 0; i < levelWidth; i++) {
@@ -20,12 +19,5 @@ public class Map {
             levelDatas[i] = levelData;
         }
     }
-
-    public void print(){
-        for (int i = 0; i < levelWidth; i++) {
-            System.out.println(levelDatas[i].levelType);
-        }
-    }
-
 
 }

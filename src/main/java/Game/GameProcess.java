@@ -12,9 +12,13 @@ public class GameProcess {
 
     public static Frame frame;
 
+    public static int levelNum = 0;
+
     public GameProcess() {
 
     }
+
+
 
     public void init() {
 
@@ -26,7 +30,7 @@ public class GameProcess {
         map.generate();
         //map.print();
 
-
+        showFrame();
 
     }
 
@@ -42,16 +46,9 @@ public class GameProcess {
     }
 
     //开始游戏进程
-    public void go() {
+    public void goOnce() {
 
-        for (LevelData levelData : map.levelDatas){
-            levelData.importPlayer(levelData.player);
-            levelData = map.levelManager.levelStart(levelData);
-            if (levelData.player.getHealth() <= 0){
-                System.out.println("游戏结束");
-                return;
-            }
-        }
+        map.levelManager.levelStart(map.levelDatas[levelNum]);
 
     }
 

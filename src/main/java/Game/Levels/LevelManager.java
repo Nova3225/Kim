@@ -1,46 +1,40 @@
 package Game.Levels;
 
+import Game.GameProcess;
+
+//连接关卡和显示器
 public class LevelManager {
 
     public int healthRecover = 10;
 
-    public LevelData levelStart(LevelData levelData){
+    public void levelStart(LevelData levelData){
         switch (levelData.levelType) {
             case FIGHT:
-                return fight(levelData);
+                fight(levelData);
+                break;
             case EVENT:
-                return event(levelData);
+                event(levelData);
+                break;
             case BOSS:
-                return boss(levelData);
-            default:
-                return levelData;
+                boss(levelData);
+                break;
         }
     }
 
-
-
-    private LevelData fight(LevelData levelData){
-
-
-        //TODO
-
-        levelData.player.setHealth(levelData.player.getHealth() + healthRecover);
-        // 返回修改后的levelData以便分析战后数据
-        return levelData;
+    private void fight(LevelData levelData){
+        GameProcess.frame.fight();
     }
 
-    private LevelData event(LevelData levelData) {
+    private void event(LevelData levelData) {
 
         //TODO
 
-        return levelData;
     }
 
-    private LevelData boss(LevelData levelData) {
+    private void boss(LevelData levelData) {
 
         //TODO
 
-        return levelData;
     }
 
 

@@ -12,7 +12,8 @@ public class DamageCalculator {
     FilterChain<DamageData> chain = new DefaultDamageFilterChain<DamageData>()
             .addFilter(new NormalDamageFilter())
             .addFilter(new RuneFilter())
-            .addFilter(new DefenseFilter());
+            .addFilter(new DefenseFilter())
+            .addFilter(new FinalFilter());
 
     public int calculate(Entity attacker, Entity defender) {
         DamageData data = new DamageData(attacker, defender);
