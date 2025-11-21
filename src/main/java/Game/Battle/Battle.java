@@ -11,17 +11,25 @@ public class Battle {
     }
 
     //DISPLAY
-    public void playerAttack(Monster monster){
+    public int playerAttack(Monster monster){
         DamageCalculator damageCalculator = new DamageCalculator();
         int damage = damageCalculator.calculate(GameProcess.player, monster);
         System.out.println(damage);
 
-        monsterBehavior();
+        monsterBehavior(monster);
+        return damage;
     }
 
     //DISPLAY
-    public void monsterBehavior(){
+    public void monsterBehavior(Monster monster){
+        monsterAttack(monster);
+    }
 
+    public void monsterAttack(Monster monster){
+        DamageCalculator damageCalculator = new DamageCalculator();
+        int damage = damageCalculator.calculate(monster,GameProcess.player);
+        System.out.println("Monster attacking...");
+        System.out.println(damage);
     }
 
 }

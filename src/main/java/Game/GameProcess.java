@@ -19,12 +19,18 @@ public class GameProcess {
     public void init() {
 
         //玩家信息生成
-        player = new Player(1200, 0, 100);
+        player = new Player(1200, 50, 100);
 
         //地图生成
         map = new Map(); //ArrayList<LevelData>:levelDatas;
         map.generate();
         //map.print();
+
+
+
+    }
+
+    public void showFrame(){
 
         //显示系统初始化
         frame = new Frame();
