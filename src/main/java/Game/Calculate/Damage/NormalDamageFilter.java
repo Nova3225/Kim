@@ -7,6 +7,7 @@ public class NormalDamageFilter implements Filter<DamageData> {
 
     @Override
     public DamageData doFilter(DamageData data, FilterChain<DamageData> chain) {
+        data.setFinalDamage(data.getOriginDamage());
         return chain.doFilter(data);
     }
 

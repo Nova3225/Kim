@@ -17,7 +17,7 @@ public class DefaultDamageFilterChain<T> implements FilterChain<T> {
 
     @Override
     public T doFilter(T data) {
-        if (position++ < filters.size()) {
+        if (position < filters.size()) {
             return filters.get(position++).doFilter(data, this);
         }
         return data;

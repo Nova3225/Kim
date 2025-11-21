@@ -1,6 +1,8 @@
 package Entity;
 
-public class Entity {
+import Game.Calculate.Damage.DamageCalculator;
+
+public abstract class Entity {
 
     protected int health;
     protected int maxHealth;
@@ -46,6 +48,12 @@ public class Entity {
 
     public void setAttack(int attack) { //取值[0,#)
         this.attack = Math.max(attack, 0);
+    }
+
+    public int attack(Entity enemy) {
+        DamageCalculator calculator = new DamageCalculator();
+        int damage = calculator.calculate(this, enemy);
+        return damage;
     }
 
 }

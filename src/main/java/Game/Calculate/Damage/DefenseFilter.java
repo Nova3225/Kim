@@ -9,7 +9,7 @@ public class DefenseFilter implements Filter<DamageData>{
 
     @Override
     public DamageData doFilter(DamageData data, FilterChain<DamageData> chain) {
-        int maxDamage;
+        int maxDamage = 999999;
         if (data.getDefender().getDefense() > 0){
             if (data.getFinalDamage() > data.getDefender().getDefense()){
                 if (data.getDefender().getClass() == Player.class){
@@ -18,13 +18,14 @@ public class DefenseFilter implements Filter<DamageData>{
                     } else {
                         maxDamage = 500;
                     }
-                } else if (data.getDefender().getClass() == Monster.class) {
-                    if (data.getDefender().getMaxHealth() >= 900){
-                        maxDamage = data.getDefender().getMaxHealth() / 10 * 9;
-                    } else {
-                        maxDamage = 900;
-                    }
                 }
+                if (data.getFinalDamage() - data.getDefender().getDefense() <= maxDamage){
+                    data.setFinalDamage(data.getFinalDamage() - data.getDefender().getDefense());
+                }else{
+                    data.setFinalDamage(maxDamage);
+                    System.out.println("本次攻击伤害有封顶！为：" + maxDamage);
+                }
+                data.getDefender().setDefense(0);
             }else {
                 data.getDefender().setDefense(data.getDefender().getDefense() - data.getFinalDamage());
                 data.setFinalDamage(0);
